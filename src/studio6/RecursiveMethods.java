@@ -12,11 +12,13 @@ public class RecursiveMethods {
 	 *         ...)
 	 */
 	public static double geometricSum(int n) {
-		
-			// FIXME compute the geometric sum for the first n terms recursively
-			return 0;
-		
+	    if (n == 0) {
+	        return 0.0;
+	    } else {
+	        return Math.pow(0.5, n) + geometricSum(n - 1);
+	    }
 	}
+
 
 	/**
 	 * This method uses recursion to compute the greatest common divisor
@@ -27,11 +29,13 @@ public class RecursiveMethods {
 	 * @return greatest common divisor of p and q
 	 */
 	public static int gcd(int p, int q) {
-		
-			// FIXME compute the gcd of p and q using recursion
-			return 0;
-		
+	    if (q == 0) {
+	        return p;
+	    } else {
+	        return gcd(q, p % q);
+	    }
 	}
+
 
 	
 
@@ -41,12 +45,23 @@ public class RecursiveMethods {
 	 * @param array the array to create a reverse of, not to be mutated
 	 * @return an array with the same data as the input but it reverse order
 	 */
+
+	
 	public static int[] toReversed(int[] array) {
-		
-			// FIXME create a helper method that can recursively reverse the given array
-			return new int[0];
-		
+	    int[] reversed = new int[array.length];
+	    reverseArray(array, reversed, 0, array.length - 1);
+	    return reversed;
 	}
+
+	private static void reverseArray(int[] original, int[] reversed, int startIndex, int endIndex) {
+	    if (startIndex <= endIndex) {
+	        reversed[startIndex] = original[endIndex];
+	        reversed[endIndex] = original[startIndex];
+	        reverseArray(original, reversed, startIndex + 1, endIndex - 1);
+	    }
+	}
+
+
 
 	/**
 	 * @param xCenter                       x-coordinate of the center of the circle
